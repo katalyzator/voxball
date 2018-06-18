@@ -1,0 +1,27 @@
+version: "2"
+
+services:
+  web:
+    restart: always
+    build: ./src
+    env_file:
+      - .env
+      - etc/envs/web
+    volumes:
+      - ./src:/app
+      - ./volumes/web/logs:/logs
+      - ./volumes/web/media:/media
+
+  celery:
+    restart: always
+    build: ./src
+    command: celery -A votem worker -l info -B
+    env_file:
+      - .env
+      - ./etc/envs/web
+    volumes:
+      - ./src:/app
+      - ./volumes/web/logs:/logs
+
+  kibana:
+    image: kibana

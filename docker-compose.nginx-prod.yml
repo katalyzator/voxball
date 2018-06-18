@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  nginx:
+    restart: always
+    image: nginx:stable
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./etc/nginx-prod:/etc/nginx
+      - ./volumes/frontend/:/data/frontend
+      - ./volumes/api_static:/data/api
+      - ./volumes/letsencrypt/www:/var/www/certbot:ro
+      - ./volumes/letsencrypt/data:/etc/letsencrypt:ro
+      - ./volumes/web/media:/data/media:ro

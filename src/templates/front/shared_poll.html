@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"><!-- ne nuzhno meniyat' -->
+    <title>VoxBall</title><!-- ne nuzhno meniyat' -->
+    <meta name="description" content="{{description}}" />
+    <meta property="fb:app_id" content="619746428231129" /><!-- ne nuzhno meniyat' -->
+    <meta property="og:type" content="article" /><!-- ne nuzhno meniyat' -->
+    <meta property="og:title" content="{{poll.title}}">
+    <meta property="og:description" content="{{description}}">
+{% comment %}
+    <meta property="og:image" content="{{poll.facebook_image.url}}">
+    <meta property="og:image:width" content="{{poll.facebook_image.width}}">
+    <meta property="og:image:height" content="{{poll.facebook_image.height}}">
+{% endcomment %}
+    <meta property="og:image" content="{{poll.image.url}}">
+    <meta property="og:image:width" content="{{poll.image.width}}">
+    <meta property="og:image:height" content="{{poll.image.height}}">
+    <meta property="og:url" content="{{SITE_URL}}{% url 'polls:shared_poll' poll.private_code %}">
+    <meta property="og:site_name" content="voxball.com" />
+
+    <meta name="twitter:card" value="summary"><!-- ne nuzhno meniyat' -->
+    <script>
+      window.location.replace("{{SITE_URL}}/poll/{{poll.slug}}");
+    </script>
+  </head>
+  <body>
+    <h3>Страница <a href="{{SITE_URL}}/poll/{{poll.slug}}">опроса</a><br /></h3>
+    <h3>Страница <a href="{{SITE_URL}}">сайта</a></h3>
+  </body>
+</html>

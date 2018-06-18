@@ -1,0 +1,19 @@
+version: "2"
+
+services:
+  nginx:
+    restart: always
+    image: nginx:stable
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - ./etc/nginx-dev:/etc/nginx
+      - ../volumes/letsencrypt/data:/etc/letsencrypt:ro
+      - ../volumes/web/media:/data/media:ro
+    networks:
+      - voxball-dev
+
+networks:
+  voxball-dev:
+    external: true

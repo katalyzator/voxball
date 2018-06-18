@@ -1,0 +1,2 @@
+proxy_set_header X-Track-Id $track_id;
+proxy_set_header X-Track-Step $track_step;

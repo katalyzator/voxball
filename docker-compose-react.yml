@@ -1,0 +1,40 @@
+version: "2"
+
+services:
+  react-build:
+    image: node
+    working_dir: /frontend
+    command: 'npm run build-prod'
+    volumes:
+      - ../voxball-frontend:/frontend
+      - ./volumes/frontend:/frontend/build
+
+  react-build-test:
+    image: node
+    working_dir: /frontend
+    command: 'npm run build'
+    environment:
+      REACT_APP_ENV: dev
+    volumes:
+      - ../voxball-frontend:/frontend
+      - ./volumes/frontend:/frontend/build
+
+  react-install:
+    image: node
+    working_dir: /frontend
+    command: 'npm install'
+    environment:
+      REACT_APP_ENV: dev
+    volumes:
+      - ../voxball-frontend:/frontend
+      - ./volumes/frontend:/frontend/build
+
+  react-dev:
+    image: node
+    environment:
+      HOST: 0.0.0.0
+    working_dir: /frontend
+    command: 'npm run start-win'
+    volumes:
+      - ../voxball-frontend:/frontend
+
